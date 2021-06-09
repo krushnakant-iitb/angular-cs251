@@ -1,0 +1,21 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+<div class="add_course_button">
+    <div *ngIf="is_professor">
+        <button class="btn btn-primary addCourse" (click)="AddCourse()">Add Course</button>
+    </div>
+</div>
+
+<div class="flex-container">
+    <div class="tot" *ngFor="let course of courses;index as i">
+        <div class="card bg-info shadow-lg">
+            <img class="card-img-top" src="assets/img1.jpg" alt="Card image">
+            <div class="card-body">
+                <h3 class="card-title">{{course.code}}</h3>
+                <h4><a routerLink="{{'/course/'+course.name+'/'+course.id}}" style="color:white;"> {{course.name}}</a></h4>
+                <a routerLink="{{'/course/list/'+course.id+'/'}}"><button>List of Users</button></a>
+            </div>
+        </div>
+
+    </div>
+</div>

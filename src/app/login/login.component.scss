@@ -1,0 +1,62 @@
+.card-header {
+    font-size: 35px;
+    color: black;
+    text-align: center;
+}
+
+.card {
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10%;
+    padding-bottom: 20%;
+}
+
+.card-body {
+    margin-top: 50px;
+    padding-top: 50px;
+}
+
+.space-it {
+    margin-top: 30px;
+    padding-top: 30%;
+}
+
+.form-control {
+    width: 80%;
+    margin-left: 10%;
+    margin-right: 10%;
+    height: 40px;
+    margin-bottom: 20px;
+}
+
+.login {
+    margin-right: 20px;
+}
+
+.button {
+    text-align: center;
+}
+
+.form-control{
+    font-size: medium;
+}
+
+.login_button{
+    background-color: slateblue;
+    font-size: 15px;
+    border-radius: 10px;
+      
+}
+
+.required{
+    font-size: large;
+    margin-left: 50px;
+    color: chartreuse;
+}
+
+
+.dont-have{
+    background-color:red;
+    padding-left: 10px;
+}

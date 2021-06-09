@@ -1,0 +1,55 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+<div class="card bg-info text-white">
+    <div class="card-header">Register</div>
+    <div class="class-body">
+        <form [formGroup]="registerForm">
+
+            <div class="form-group">
+                <label for="username" style="font-size:20px;">Username:</label>
+                <input type="text" placeholder="create your username" formControlName="username" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
+                <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+                    <div class="required" *ngIf="f.username.errors.required">Username is required</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="email" style="font-size:20px;">Email:</label>
+                <input type="email" placeholder="enter your email" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
+                <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                    <div class="required" *ngIf="f.email.errors.required">Email is required</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="password" style="font-size:20px;">Password:</label>
+                <input type="password" placeholder="create password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+                <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                    <div class="required" *ngIf="f.password.errors.required">Password is required</div>
+                    <div class="required" *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
+                </div>
+            </div>
+        </form>
+           
+
+        <form [formGroup]="auth_code_form">
+            <div class="form-group">
+                <label for="password" style="font-size:20px;">Authentication Code:</label>
+                <input type="password" placeholder="enter authentication code" formControlName="auth_code" class="form-control" [ngClass]="{ 'is-invalid': submitted && f1.auth_code.errors }" />
+                <div *ngIf="submitted && f1.auth_code.errors" class="invalid-feedback">
+                    <div class="required" *ngIf="f1.auth_code.errors.required">Authentication Code is required</div>
+                </div>
+            </div>
+        </form>
+
+        <div>
+            <span>
+                <button [disabled]="loading" (click)="onSubmit()" class="btn btn-primary btn-lg">
+                <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span> Register
+            </button>
+            </span>
+            <button class="btn">
+                <a routerLink="/login" class="cancel btn btn-link btn-danger btn-lg">Cancel</a>
+            </button>
+            <span class="al" style="color:black;">Already have an account? Login <a href="/login" style="color:red;"><u>Here</u></a></span>
+        </div>
+    </div>
+</div>

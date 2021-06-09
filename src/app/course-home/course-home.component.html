@@ -1,0 +1,103 @@
+
+<h1 class="h1">{{course_name}}</h1>
+<mat-expansion-panel class = "add">    
+    <mat-expansion-panel-header class = "right-aligned-header"> 
+        <mat-panel-title></mat-panel-title>
+        <mat-panel-description style="text-align: center">
+            Add a student / TA
+        </mat-panel-description>
+    </mat-expansion-panel-header>
+    <div class = "form-group">
+        <div *ngIf="course_status=='professor'||course_status=='TA'">
+              <label class="username" style="font-size:25px; margin-bottom: 20px;">Username:</label>
+              <input type="text" [formControl]="username" class = "form-control" [ngClass]="{ 'is-invalid': submitted_add && username.errors }">
+              <div *ngIf="submitted_add && username.errors" class="invalid-feedback">
+                <div *ngIf="username.errors.required">Username is required</div>
+              </div>
+              <span style="margin-right: 20px;"><button [disabled] = "a_t_l"*ngIf="course_status=='professor'" class="submit btn btn-primary btn-xl" (click)="AddTA()">Add TA</button></span>
+              <span><button [disabled] = "a_s_l" *ngIf="course_status=='TA'||course_status=='professor'" class="submit btn btn-dark btn-xl" (click)="AddStudent()">Add Student</button></span>  
+          </div>
+      </div>
+</mat-expansion-panel> 
+
+<mat-expansion-panel class = "send">    
+    <mat-expansion-panel-header> 
+        <!-- <mat-panel-title></mat-panel-title> -->
+        <mat-panel-description  style="text-align:center;">
+            Send a Message!
+        </mat-panel-description>
+    </mat-expansion-panel-header>
+    <div class = "form-group">
+        <div *ngIf="course_status=='professor'||course_status=='TA'">
+            <form [formGroup]="message">
+                <label class="message" style="font-size:25px; margin-bottom: 20px;">Message:</label>
+                <input type="text" formControlName="message_text" class = "form-control"  [ngClass]="{ 'is-invalid': submitted_m && f.message_text.errors }">
+                <input type="radio" formControlName="message_priority" id="low" class="priority" value="false" checked>
+                <label for="low">Lower Priority</label><br>
+                <input type="radio" formControlName="message_priority" id="high" class="priority" value="true">
+                <label for="low">High Priority</label><br>
+                <div *ngIf="submitted_m && f.message_text.errors" class="invalid-feedback">
+                    <div *ngIf="f.message_text.errors.required">Message cannot be empty</div>
+                </div>
+                <span style="margin-right: 20px;">
+                    <button [disabled]="m_t_l" *ngIf="course_status=='professor'" class="submit btn btn-primary btn-xl" (click)="SendTA()">Send to TA</button>
+                </span>
+                <span>
+                    <button [disabled]="m_s_l" *ngIf="course_status=='TA'||course_status=='professor'" class="submit btn btn-dark btn-xl" (click)="SendStudent()">Send to Students</button>  
+                </span>
+            </form>
+        </div>
+      </div>
+</mat-expansion-panel> 
+
+<div class = "container">
+    <h2 class = "message-title">Previous Messages</h2>
+    <div *ngFor="let message of messages" class = "col-lg-12 col-md-12">     
+        <div *ngIf="message.prior">
+            <div *ngIf="message.from_username==='professor'">
+                <div class="card bg-light text-red prof">
+                    <div class="card-header">
+                        <a routerLink="{{'/course/read/'+message.id}}"><p>{{message.from_username}}</p></a>
+                    </div>
+                    <div class="class-body">
+                        <p style="color: red;">{{message.message}}</p>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="!(message.from_username==='professor')">
+                <div class="card bg-light text-red TA">
+                    <div class="card-header">
+                        <a routerLink="{{'/course/read/'+message.id}}"><p>{{message.from_username}}</p></a>
+                    </div>
+                    <div class="class-body">
+                        <p style="color: red;">{{message.message}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>   
+        <div *ngIf="!message.prior">
+            <div *ngIf="message.from_username==='professor'">
+                <div class="card bg-light text-red prof">
+                    <div class="card-header">
+                        <a routerLink="{{'/course/read/'+message.id}}"><p>{{message.from_username}}</p></a>
+                    </div>
+                    <div class="class-body">
+                        <p style="color:green;">{{message.message}}</p>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="!(message.from_username==='professor')">
+                <div class="card bg-light TA">
+                    <div class="card-header">
+                        <a routerLink="{{'/course/read/'+message.id}}"><p>{{message.from_username}}</p></a>
+                    </div>
+                    <div class="class-body">
+                        <p style="color:green;">{{message.message}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>    
+    </div>
+
+  
+</div>

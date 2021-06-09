@@ -1,0 +1,35 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+
+<div class="card bg-secondary text-white">
+    <div class="card-header">Add a Course!</div>
+    <div class="card-body">
+        <form [formGroup]="CourseForm">
+
+            <div class="form-group">
+                <label for="name" style="font-size: 20px;">Name</label>
+                <input type="text" placeholder="course name" formControlName="name" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.name.errors }" />
+                <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+                    <div class="required" *ngIf="f.name.errors.required">Name is required</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="code" style="font-size: 20px;">Code</label>
+                <input type="text" placeholder="course code" formControlName="code" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.code.errors }" />
+                <div *ngIf="submitted && f.code.errors" class="invalid-feedback">
+                    <div class="required" *ngIf="f.code.errors.required">Code is required</div>
+                    <div class="required" *ngIf="f.code.errors.maxlength">Code must be 5 characters</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <span class="add">
+                    <button type="button" [disabled]="loading" class="btn btn-primary btn-lg" (click)="onSubmit()" >                        
+                        <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span> Add Course
+                </button>
+                </span>
+                <button class="btn">
+                    <a routerLink="/" class="cancel btn btn-link btn-danger btn-lg" >Cancel</a>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

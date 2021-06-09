@@ -1,0 +1,24 @@
+<h2>Professor</h2>
+
+<div *ngFor="let student of list_of_students"> 
+    <div *ngIf="student.is_professor" class=" list card  bg-light text-red ">
+        <div  class="card-header">
+            <p>{{student.username}}</p>
+        </div>
+        
+    </div>
+</div>
+
+<h2>Students and TA's</h2>
+<div *ngFor="let student of list_of_students"> 
+    <div *ngIf="!student.is_professor" class=" list card  bg-light text-red ">
+        <div  class="card-header">
+            <p>{{student.username}}</p>
+        </div>
+        <div *ngIf="is_professor">
+            <div class="class-body">
+                <button (click)="delete_student(student.username)">Remove the student</button>
+            </div>
+        </div>
+    </div>
+</div>
