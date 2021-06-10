@@ -2,14 +2,6 @@
 
 This is a project that is a centralised dashboard which can allows the professor and TA's to send notifications and allow students to view the messages
 
-## Team Members
-Team:
-
-Prajeeth.S(190050117)
-Girish M.V(190050069)
-Gaurav.P(190050037)
-Krushnakant(190100036)
-
 # Key Features
 
 ## Sign Up Page
@@ -44,7 +36,7 @@ Also messages sent by prof appear on left side and messages by TA’s on the rig
 ## About Page
 
 This page consist of a short description about the project
-This page also consist of a nice logo with the team members and their names with roll no
+This page also consist of a nice logo 
 Angular Bootstrap 4 was exclusively used here for the styling
 
 
